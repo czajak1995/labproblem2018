@@ -1,0 +1,73 @@
+POST https://192.168.1.12:8080/item
+Cache-Control: no-cache
+Content-Type: application/json
+
+< /media/root/Files/SHARED/lab/proj/webclient/webclient/webclient/req.json
+
+###
+
+GET https://192.168.1.12:8080/item
+Cache-Control: no-cache
+Content-Type: application/json
+
+< /media/root/Files/SHARED/lab/proj/webclient/webclient/webclient/req.json
+
+<> 2018-10-14T100647.200.json
+
+###
+
+POST https://192.168.1.12:8080/item
+Cache-Control: no-cache
+Content-Type: application/json
+
+< /media/root/Files/SHARED/lab/proj/webclient/webclient/webclient/req.json
+
+###
+
+POST https://192.168.1.12:8080/item
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+< /media/root/Files/SHARED/lab/proj/webclient/webclient/webclient/req.json
+
+###
+
+POST https://192.168.1.12:8080/item
+Accept: application/json
+Cache-Control: no-cache
+
+< /media/root/Files/SHARED/lab/proj/webclient/webclient/webclient/req.json
+
+<> 2018-10-14T094035.500.json
+
+###
+
+POST https://192.168.1.12:8080/item
+Accept: application/json
+Cache-Control: no-cache
+
+{       'name': 'vegetables',       'groupName': 'spozywcze',       'price': 7.88,       'availableAmount': 6     }
+
+<> 2018-10-14T093857.415.json
+
+###
+
+POST https://192.168.1.12:8080/item
+Accept: */*
+Cache-Control: no-cache
+
+{       'name': 'vegetables',       'groupName': 'spozywcze',       'price': 7.88,       'availableAmount': 6     }
+
+<> 2018-10-14T093757.415.json
+
+###
+
+GET https://192.168.1.12:8080/item
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-10-14T090423.200.json
+
+###
+
