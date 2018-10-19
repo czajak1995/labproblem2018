@@ -1,0 +1,1 @@
+C:\Users\Dorota\source\repos\TestAsync\TestAsync\TestAsync.UWP\TestAsync.UWP.csproj;x86
