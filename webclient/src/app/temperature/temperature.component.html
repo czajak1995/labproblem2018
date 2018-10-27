@@ -1,6 +1,21 @@
-<div *ngIf="chart">
-  <canvas id="canvas" width="1500" height="500">{{ chart }}</canvas>
-</div>
+<!-- <div class="container">
+  <h2>Devices</h2>                                    
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Chosose device
+    <span class="caret"></span></button>
+    <select>
+      <option *ngFor="let item in items">item</option>
+    </select>
+  </div>
+</div> -->
+
+<select [(ngModel)]="deviceSelected" (ngModelChange)='onDeviceSelected($event)'>
+  <option *ngFor="let device of devices" [value]="device.Id">{{device.Name}}</option>
+</select>
+
+
+
+<canvas id="canvas" width="1200" height="500">{{ chart }}</canvas>
 
 
 
