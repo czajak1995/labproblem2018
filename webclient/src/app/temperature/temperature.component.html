@@ -1,0 +1,33 @@
+<div *ngIf="chart">
+  <canvas id="canvas" width="1500" height="500">{{ chart }}</canvas>
+</div>
+
+
+
+<table class='table'  *ngIf="avgTemp" border="1">
+  <thead>
+    <tr align="center">
+      <th></th>
+      <th>Temp. (C)</th>
+      <th>Date </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr align="center">
+      <td>Min Temp.</td>
+      <td>{{ minTemp["Temp"] }}</td>
+      <td>{{ minTemp["Date"] | date : YYMMDD}}</td>
+    </tr>
+    <tr align="center">
+      <td>Max Temp.</td>
+      <td>{{ maxTemp["Temp"] }}</td>
+      <td>{{ maxTemp["Date"] | date : YYMMDD}}</td>
+    </tr>
+    <tr align="center">
+      <td>Avg. Temp.</td>
+      <td>{{ avgTemp }}</td>
+      <td></td>
+    </tr>
+
+  </tbody>
+</table>

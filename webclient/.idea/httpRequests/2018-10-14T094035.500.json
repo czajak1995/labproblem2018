@@ -1,8 +1,0 @@
-{
-  "timestamp": 1539546035148,
-  "status": 500,
-  "error": "Internal Server Error",
-  "exception": "java.lang.IllegalArgumentException",
-  "message": "'Content-Type' cannot contain wildcard type '*'",
-  "path": "/item"
-}
