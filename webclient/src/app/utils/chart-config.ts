@@ -4,12 +4,13 @@ export class ChartConfig {
     private static chart: {};
 
     static prepareChart(type:string, title:string, labelX:string, 
-        labelY:string, minY:number=0, maxY:number=100, xData:any[], yData:any[], color="#BBBBBB") {
+        labelY:string, minY:number, maxY:number, xData:any[], yData:any[], color="#BBBBBB") {
         this.chart = {
             type: type,
             data: this.addData(title, xData, yData, color),
             options: {
-              responsive: false,
+              responsive: true,
+              maintainAspectRatio: false,
               legend: {
                 display: true
               },
@@ -21,7 +22,7 @@ export class ChartConfig {
             }
           }
         
-          return this.chart
+        return this.chart
     }
 
     private static prepareXAxis(label:string) {
