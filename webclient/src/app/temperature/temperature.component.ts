@@ -4,6 +4,7 @@ import { Chart } from 'chart.js';
 import { Temperature } from '../temperature.service'
 import { DeviceService, Device } from '../device.service';
 import { ChartConfig } from "../utils/chart-config"
+import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
