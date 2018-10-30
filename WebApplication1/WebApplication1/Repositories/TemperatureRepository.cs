@@ -60,11 +60,20 @@ namespace WebApplication1.Repositories
             return db.SaveChangesAsync();
         }
 
-        public List<TemperatureInfo> GetTemperatureInfos()
+        public List<int> GetAverageTemperatures()
         {
             return db.Devices.ToList().Select(x =>
             {
-                TemperatureInfo info = new TemperatureInfo();
+                return GetAverageTemperature(x.Id);
+
+            }).ToList();
+        }
+
+        public List<DeviceInfo> GetDeviceInfos()
+        {
+            return db.Devices.ToList().Select(x =>
+            {
+                DeviceInfo info = new DeviceInfo();
                 info.Max = GetMaxTemperature(x.Id);
                 info.Min = GetMinTemperature(x.Id);
                 info.Average = GetAverageTemperature(x.Id);

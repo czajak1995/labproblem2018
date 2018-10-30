@@ -9,7 +9,6 @@ namespace WebApplication1.Models
     {
         public Temperature Min { get; set; }
         public Temperature Max { get; set; }
-        public Device Device { get; set; }
         public int Average { get; set; }
     }
 }
