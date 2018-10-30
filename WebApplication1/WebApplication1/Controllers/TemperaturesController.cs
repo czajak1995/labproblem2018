@@ -33,6 +33,12 @@ namespace WebApplication1.Controllers
             return temperatureRepository.GetTemperatureInfos();
         }
 
+        [Route("avgs")]
+        public List<int> GetAverageTemperatures()
+        {
+            return temperatureRepository.GetAverageTemperatures();
+        }
+
         [Route("all")]
         public List<int> GetTemperatures(int deviceId)
         {
