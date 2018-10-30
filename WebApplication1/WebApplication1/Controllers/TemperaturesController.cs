@@ -28,13 +28,9 @@ namespace WebApplication1.Controllers
         }
 
         [Route("info")]
-        public TemperatureInfo GetTemperatureInfo(int deviceId)
+        public List<TemperatureInfo> GetDeviceInfo()
         {
-            TemperatureInfo Info = new TemperatureInfo();
-            Info.Max = temperatureRepository.GetMaxTemperature(deviceId);
-            Info.Min = temperatureRepository.GetMinTemperature(deviceId);
-            Info.Average = temperatureRepository.GetAverageTemperature(deviceId);
-            return Info;
+            return temperatureRepository.GetTemperatureInfos();
         }
 
         [Route("all")]
