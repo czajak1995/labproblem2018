@@ -13,8 +13,7 @@ export class DeviceService {
 
   getAllDevices() {
     if(!AppComponent.isMock()) {
-      return this.http.get<Device[]>(BASE_URL + "device")
-        .pipe(result => result); 
+      return this.http.get<Device[]>(BASE_URL + "device/all").pipe(result => result); 
     } else {
       let devices: Device[] = [
         {Id: 1, Name: "Wiertarka"},
@@ -27,7 +26,6 @@ export class DeviceService {
     }
   }
 }
-
 
 export interface Device {
   Id: number;
