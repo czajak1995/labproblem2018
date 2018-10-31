@@ -27,14 +27,26 @@ namespace WebApplication1.Controllers
             return 1;
         }
 
+        [Route("deviceInfos")]
+        public List<DeviceInfo> GetDeviceInfo()
+        {
+            return temperatureRepository.GetDeviceInfos();
+        }
+
         [Route("info")]
         public TemperatureInfo GetTemperatureInfo(int deviceId)
         {
-            TemperatureInfo Info = new TemperatureInfo();
-            Info.Max = temperatureRepository.GetMaxTemperature(deviceId);
-            Info.Min = temperatureRepository.GetMinTemperature(deviceId);
-            Info.Average = temperatureRepository.GetAverageTemperature(deviceId);
-            return Info;
+            TemperatureInfo info = new TemperatureInfo();
+            info.Max = temperatureRepository.GetMaxTemperature(deviceId);
+            info.Min = temperatureRepository.GetMinTemperature(deviceId);
+            info.Average = temperatureRepository.GetAverageTemperature(deviceId);
+            return info;
+        }
+
+        [Route("avgs")]
+        public List<int> GetAverageTemperatures()
+        {
+            return temperatureRepository.GetAverageTemperatures();
         }
 
         [Route("all")]

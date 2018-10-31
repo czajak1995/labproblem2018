@@ -211,6 +211,7 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Device.cs" />
     <Compile Include="Models\Temperature.cs" />
+    <Compile Include="Models\DeviceInfo.cs" />
     <Compile Include="Models\TemperatureInfo.cs" />
     <Compile Include="Models\WebApplication1Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

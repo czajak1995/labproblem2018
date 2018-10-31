@@ -10,6 +10,7 @@ namespace WebApplication1.Repositories
     public class DeviceRepository
     {
         private WebApplication1Context db = new WebApplication1Context();
+        private TemperatureRepository temperatureRepository = new TemperatureRepository();
         public List<Device> GetDevices()
         {
             return db.Devices.ToList();

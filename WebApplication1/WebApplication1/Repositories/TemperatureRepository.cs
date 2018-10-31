@@ -60,6 +60,29 @@ namespace WebApplication1.Repositories
             return db.SaveChangesAsync();
         }
 
+        public List<int> GetAverageTemperatures()
+        {
+            return db.Devices.ToList().Select(x =>
+            {
+                return GetAverageTemperature(x.Id);
+
+            }).ToList();
+        }
+
+        public List<DeviceInfo> GetDeviceInfos()
+        {
+            return db.Devices.ToList().Select(x =>
+            {
+                DeviceInfo info = new DeviceInfo();
+                info.Max = GetMaxTemperature(x.Id);
+                info.Min = GetMinTemperature(x.Id);
+                info.Average = GetAverageTemperature(x.Id);
+                info.Device = x;
+                return info;
+
+            }).ToList();
+        }
+
         private Temperature GenerateRandomTemperature(int id, int deviceId)
         {
             Temperature temperature = new Temperature();
