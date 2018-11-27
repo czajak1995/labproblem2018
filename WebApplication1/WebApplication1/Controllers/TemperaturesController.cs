@@ -1,11 +1,16 @@
-﻿using System;
+﻿using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -18,6 +23,49 @@ namespace WebApplication1.Controllers
     public class TemperaturesController : ApiController
     {
         private TemperatureRepository temperatureRepository = new TemperatureRepository();
+        private DeviceRepository deviceRepository = new DeviceRepository();
+
+        [Route("export")]
+        [HttpGet]
+        public HttpResponseMessage Export()
+        {
+            XSSFWorkbook wb = new XSSFWorkbook();
+            List<Device> devices = deviceRepository.GetDevices();
+
+            for (int i = 0; i < devices.Count; i++)
+            {
+                ISheet sheet = wb.CreateSheet(devices[i].Name);
+                List<int> temperatures = temperatureRepository.GetTemperatures(devices[i].Id);
+
+                var weekNumber = sheet.CreateRow(0);
+                var weekTemperature = sheet.CreateRow(1);
+
+                for(int j = 0; j < temperatures.Count; j++)
+                {
+                    weekNumber.CreateCell(j).SetCellValue(j + 1);
+                    weekTemperature.CreateCell(j).SetCellValue(temperatures[j]);
+                }
+            }
+
+            using (var memoryStream = new MemoryStream()) 
+            {
+                wb.Write(memoryStream);
+                var response = new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new ByteArrayContent(memoryStream.ToArray())
+                };
+
+                response.Content.Headers.ContentType = new MediaTypeHeaderValue
+                       ("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                response.Content.Headers.ContentDisposition =
+                       new ContentDispositionHeaderValue("attachment")
+                       {
+                           FileName = $"Temperatures{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx"
+                       };
+
+                return response;
+            }
+        }
 
         [Route("generate")]
         [HttpGet]
