@@ -172,3 +172,8 @@ C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\W
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\NPOI.dll
+C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\NPOI.OOXML.dll
+C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\NPOI.OpenXml4Net.dll
+C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\NPOI.OpenXmlFormats.dll
