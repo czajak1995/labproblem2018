@@ -31,10 +31,23 @@ namespace WebApplication1.Controllers
         {
             XSSFWorkbook wb = new XSSFWorkbook();
             List<Device> devices = deviceRepository.GetDevices();
+            ISheet sheet;
+
+            sheet = wb.CreateSheet("Average temp of devices");
+
+            var deviceName = sheet.CreateRow(0);
+            var avgTemperatures = sheet.CreateRow(1);
+
+            for (int j = 0; j < devices.Count; j++)
+            {
+                deviceName.CreateCell(j).SetCellValue(devices[j].Name);
+                avgTemperatures.CreateCell(j).SetCellValue(temperatureRepository.GetAverageTemperature(devices[j].Id));
+            }
+
 
             for (int i = 0; i < devices.Count; i++)
             {
-                ISheet sheet = wb.CreateSheet(devices[i].Name);
+                sheet = wb.CreateSheet(devices[i].Name);
                 List<int> temperatures = temperatureRepository.GetTemperatures(devices[i].Id);
 
                 var weekNumber = sheet.CreateRow(0);
