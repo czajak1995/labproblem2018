@@ -3,6 +3,7 @@ import { TemperatureService, TemperatureInfo } from '../temperature.service';
 import { DeviceService, Device } from '../device.service';
 import { Chart } from 'chart.js';
 import { ChartConfig } from "../utils/chart-config"
+import { saveAs } from 'file-saver';
 
 @Component({
     selector: 'app-home',
@@ -37,5 +38,19 @@ export class HomeComponent implements OnInit {
         this.chart = new Chart('canvas',
             ChartConfig.prepareChart('bar', '', 'Device', 'Temperature', Math.max.apply(Math, temperatures) - 15, 
             Math.max.apply(Math, temperatures) + 1, devices.map(device => device.Name), temperatures));
+    }
+
+    onExportDataClick() {
+        this._temperature.downloadExcelFile().subscribe(
+            (data) => {
+                if(data) {
+                    const myBlob: Blob = new Blob([(<any>data)]);
+                    saveAs(myBlob, 'SampleExcel.xlsx');
+                }
+            }, 
+            (err) => {
+                console.log("Can't download excel file")
+            }
+        )
     }
 }
