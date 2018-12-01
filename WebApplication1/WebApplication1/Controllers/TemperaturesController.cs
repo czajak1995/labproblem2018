@@ -27,7 +27,7 @@ namespace WebApplication1.Controllers
 
         [Route("export")]
         [HttpGet]
-        public HttpResponseMessage Export()
+        public HttpResponseMessage Export(string filename)
         {
             XSSFWorkbook wb = new XSSFWorkbook();
             List<Device> devices = deviceRepository.GetDevices();
@@ -73,7 +73,7 @@ namespace WebApplication1.Controllers
                 response.Content.Headers.ContentDisposition =
                        new ContentDispositionHeaderValue("attachment")
                        {
-                           FileName = $"Temperatures{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx"
+                           FileName = filename
                        };
 
                 return response;
