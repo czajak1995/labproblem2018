@@ -231,9 +231,9 @@ namespace XFMasterDetailPageNavigation.Views
 
         // var Url = "http://www.orimi.com/pdf-test.pdf";
         //var Url = "http://www.pdf995.com/samples/pdf.pdf";
-        //var Url = "http://www.pdf995.com/samples/pdf.pdf";
+        var Url = "http://www.pdf995.com/samples/pdf.pdf";
        // http://localhost:51905/api/temperature/export?filename=export.xlsx
-            var Url = "http://192.168.1.83:3002/api/temperature/export?filename=export.xlsx";
+           // var Url = "http://192.168.1.83:3002/api/temperature/export?filename=export.xlsx";
             //await getFile();
             DownloadFile(Url);
 
