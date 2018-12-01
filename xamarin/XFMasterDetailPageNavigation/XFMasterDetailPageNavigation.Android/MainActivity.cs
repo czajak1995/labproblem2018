@@ -6,6 +6,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Plugin.DownloadManager;
+using Plugin.DownloadManager.Abstractions;
+using System.Linq;
+using System.IO;
 
 namespace XFMasterDetailPageNavigation.Droid
 {
@@ -18,9 +22,21 @@ namespace XFMasterDetailPageNavigation.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-
+            Downloaded();
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
+        }
+
+        public void Downloaded()
+        {
+            CrossDownloadManager.Current.PathNameForDownloadedFile = new System.Func<IDownloadFile, string>
+               (file =>
+               {
+                   string filename = Android.Net.Uri.Parse(file.Url).Path.Split('/').Last();
+                   return Path.Combine(ApplicationContext.GetExternalFilesDir
+                       (Android.OS.Environment.DirectoryDownloads).AbsolutePath, filename);
+
+               });
         }
     }
 }

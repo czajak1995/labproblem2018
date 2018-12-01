@@ -8,6 +8,7 @@
         <StackLayout>
             <microcharts:ChartView x:Name="chartView" HeightRequest="200"  />
             <Picker x:Name="MainPicker" Title="Devices" SelectedIndexChanged="MainPicker_SelectedIndexChanged"/>
+            <Button Text="DownoadFile" HeightRequest="50" WidthRequest="300" BackgroundColor="Blue" Clicked="Button_Clicked"/>
         </StackLayout>
   </ContentPage.Content>
 </ContentPage>
