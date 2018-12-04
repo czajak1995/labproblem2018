@@ -24,11 +24,15 @@ namespace WebApplication1.Controllers
     {
         private TemperatureRepository temperatureRepository = new TemperatureRepository();
         private DeviceRepository deviceRepository = new DeviceRepository();
+        private UserRepository userRepository = new UserRepository();
 
         [Route("export")]
         [HttpGet]
-        public HttpResponseMessage Export(string filename)
+        public HttpResponseMessage Export(string sessionId, string filename)
         {
+            if (!userRepository.CanManageExport(sessionId))
+                return null; 
+
             XSSFWorkbook wb = new XSSFWorkbook();
             List<Device> devices = deviceRepository.GetDevices();
             ISheet sheet;
@@ -89,14 +93,19 @@ namespace WebApplication1.Controllers
         }
 
         [Route("deviceInfos")]
-        public List<DeviceInfo> GetDeviceInfo()
+        public List<DeviceInfo> GetDeviceInfo(string sessionId)
         {
-            return temperatureRepository.GetDeviceInfos();
+            if (userRepository.CanManageAverageTemperatures(sessionId))
+                return temperatureRepository.GetDeviceInfos();
+            else return null;
         }
 
         [Route("info")]
-        public TemperatureInfo GetTemperatureInfo(int deviceId)
+        public TemperatureInfo GetTemperatureInfo(string sessionId, int deviceId)
         {
+            if (!userRepository.CanManageAverageTemperatures(sessionId))
+                return null;
+
             TemperatureInfo info = new TemperatureInfo();
             info.Max = temperatureRepository.GetMaxTemperature(deviceId);
             info.Min = temperatureRepository.GetMinTemperature(deviceId);
@@ -105,15 +114,19 @@ namespace WebApplication1.Controllers
         }
 
         [Route("avgs")]
-        public List<int> GetAverageTemperatures()
+        public List<int> GetAverageTemperatures(string sessionId)
         {
-            return temperatureRepository.GetAverageTemperatures();
+            if (userRepository.CanManageAverageTemperatures(sessionId))
+                return temperatureRepository.GetAverageTemperatures();
+            else return null;
         }
 
         [Route("all")]
-        public List<int> GetTemperatures(int deviceId)
+        public List<int> GetTemperatures(string sessionId, int deviceId)
         {
-            return temperatureRepository.GetTemperatures(deviceId);
+            if (userRepository.CanManageYearTemperatures(sessionId))
+                return temperatureRepository.GetTemperatures(deviceId);
+            else return null;
         }
 
         [ResponseType(typeof(Temperature))]

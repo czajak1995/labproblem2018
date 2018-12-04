@@ -1,1 +1,1 @@
-﻿SELECT * FROM dbo.Temperatures WHERE DeviceId =4
+﻿I

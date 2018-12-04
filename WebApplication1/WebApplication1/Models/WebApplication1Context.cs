@@ -19,7 +19,13 @@ namespace WebApplication1.Models
         {
         }
 
-        public System.Data.Entity.DbSet<WebApplication1.Models.Book> Books { get; set; }
+        public System.Data.Entity.DbSet<WebApplication1.Models.User> Users { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication1.Models.UserLogin> UserLogins { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication1.Models.UserRole> UserRoles { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication1.Models.Role> Roles { get; set; }
 
         public System.Data.Entity.DbSet<WebApplication1.Models.Temperature> Temperatures { get; set; }
 

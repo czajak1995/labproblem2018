@@ -15,40 +15,35 @@ namespace WebApplication1.Migrations
 
         protected override void Seed(WebApplication1.Models.WebApplication1Context context)
         {
-            context.Books.AddOrUpdate(x => x.Id,
-                new Book()
+            context.Roles.AddOrUpdate(x => x.Id,
+                new Role()
                 {
                     Id = 1,
-                    Title = "Pride and Prejudice",
-                    Year = 1813,
-                    Price = 9.99M,
-                    Genre = "Comedy of manners"
-                },
-                new Book()
-                {
-                    Id = 2,
-                    Title = "Northanger Abbey",
-                    Year = 1817,
-                    Price = 12.95M,
-                    Genre = "Gothic parody"
-                },
-                new Book()
-                {
-                    Id = 3,
-                    Title = "David Copperfield",
-                    Year = 1850,
-                    Price = 15,
-                    Genre = "Bildungsroman"
-                },
-                new Book()
-                {
-                    Id = 4,
-                    Title = "Don Quixote",
-                    Year = 1617,
-                    Price = 8.95M,
-                    Genre = "Picaresque"
+                    Name = "Admin",
+                    ManageUsers = true,
+                    AverageTemperatures = true,
+                    YearTemperatures = true
                 }
                 );
+            context.Users.AddOrUpdate(x => x.Id,
+                new User()
+                {
+                    Id = 1,
+                    Forename = "Jakub",
+                    Surname = "Sobyra",
+                    Username = "jsobyra",
+                    Email = "jakub.sobyra@gmail.com",
+                    Password = "admin"
+                }
+                );
+            context.UserRoles.AddOrUpdate(x => x.Id,
+                 new UserRole()
+                 {
+                     Id = 1,
+                     UserId = 1,
+                     RoleId = 1
+                 }
+                 );
         }
     }
 }

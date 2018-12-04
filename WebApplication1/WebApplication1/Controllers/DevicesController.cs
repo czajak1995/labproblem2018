@@ -18,12 +18,15 @@ namespace WebApplication1.Controllers
     public class DevicesController : ApiController
     {
         private DeviceRepository deviceRepository = new DeviceRepository();
+        private UserRepository userRepository = new UserRepository();
 
         [Route("all")]
         [HttpGet]
-        public List<Device> GetDevices()
+        public List<Device> GetDevices(string sessionId)
         {
-            return deviceRepository.GetDevices();
+            if (userRepository.CanManageAverageTemperatures(sessionId) || userRepository.CanManageYearTemperatures(sessionId))
+                return deviceRepository.GetDevices();
+            else return null;
         }
 
 
