@@ -8,6 +8,7 @@ namespace WebApplication1.Models
 {
     public class User
     {
+        [Key]
         public int Id { get; set; }
         public string Forename { get; set; }
         public string Surname { get; set; }

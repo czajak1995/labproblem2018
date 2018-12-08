@@ -10,40 +10,43 @@ namespace WebApplication1.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(WebApplication1.Models.WebApplication1Context context)
         {
-            context.Roles.AddOrUpdate(x => x.Id,
-                new Role()
-                {
-                    Id = 1,
-                    Name = "Admin",
-                    ManageUsers = true,
-                    AverageTemperatures = true,
-                    YearTemperatures = true
-                }
-                );
-            context.Users.AddOrUpdate(x => x.Id,
-                new User()
-                {
-                    Id = 1,
-                    Forename = "Jakub",
-                    Surname = "Sobyra",
-                    Username = "jsobyra",
-                    Email = "jakub.sobyra@gmail.com",
-                    Password = "admin"
-                }
-                );
-            context.UserRoles.AddOrUpdate(x => x.Id,
-                 new UserRole()
-                 {
-                     Id = 1,
-                     UserId = 1,
-                     RoleId = 1
-                 }
-                 );
+
+            context.Users.AddOrUpdate(
+              new User {
+                  Id = 1,
+                  Email = "jsobyra@gmail.com",
+                  Surname = "Sobyra",
+                  Forename = "Jakub",
+                  Password = "admin",
+                  Username = "jsobyra"
+              });
+
+            context.Roles.AddOrUpdate(
+              new Role
+              {
+                  Id = 1,
+                  Name = "Admin",
+                  ManageUsers = true,
+                  CanExport = true,
+                  AverageTemperatures = true,
+                  YearTemperatures = true
+              });
+
+            context.UserRoles.AddOrUpdate(
+              new UserRole
+              {
+                  Id = 1,
+                  UserId = 1,
+                  RoleId = 1
+              });
+
+
+            context.SaveChanges();
         }
     }
 }

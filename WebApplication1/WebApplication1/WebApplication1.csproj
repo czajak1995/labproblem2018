@@ -215,29 +215,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810150618189_Initial.cs" />
-    <Compile Include="Migrations\201810150618189_Initial.Designer.cs">
-      <DependentUpon>201810150618189_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810270054153_TempDevice.cs" />
-    <Compile Include="Migrations\201810270054153_TempDevice.Designer.cs">
-      <DependentUpon>201810270054153_TempDevice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812010634264_UserManagement.cs" />
-    <Compile Include="Migrations\201812010634264_UserManagement.Designer.cs">
-      <DependentUpon>201812010634264_UserManagement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812010703164_dsd.cs" />
-    <Compile Include="Migrations\201812010703164_dsd.Designer.cs">
-      <DependentUpon>201812010703164_dsd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812040223099_UserLoginUp.cs" />
-    <Compile Include="Migrations\201812040223099_UserLoginUp.Designer.cs">
-      <DependentUpon>201812040223099_UserLoginUp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812040534306_RoleExport.cs" />
-    <Compile Include="Migrations\201812040534306_RoleExport.Designer.cs">
-      <DependentUpon>201812040534306_RoleExport.cs</DependentUpon>
+    <Compile Include="Migrations\201812082256145_Initial.cs" />
+    <Compile Include="Migrations\201812082256145_Initial.Designer.cs">
+      <DependentUpon>201812082256145_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Device.cs" />
@@ -343,23 +323,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810150618189_Initial.resx">
-      <DependentUpon>201810150618189_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810270054153_TempDevice.resx">
-      <DependentUpon>201810270054153_TempDevice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812010634264_UserManagement.resx">
-      <DependentUpon>201812010634264_UserManagement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812010703164_dsd.resx">
-      <DependentUpon>201812010703164_dsd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812040223099_UserLoginUp.resx">
-      <DependentUpon>201812040223099_UserLoginUp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812040534306_RoleExport.resx">
-      <DependentUpon>201812040534306_RoleExport.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812082256145_Initial.resx">
+      <DependentUpon>201812082256145_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

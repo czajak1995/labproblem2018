@@ -17,41 +17,46 @@ namespace WebApplication1.Repositories
 
         public bool CanManageUsers(string sessionId)
         {
-            if (users.ContainsKey(sessionId))
+            /*if (users.ContainsKey(sessionId))
             {
                 int userId = users[sessionId];
                 return GetRole(userId).ManageUsers;
             }
-            else return false;
+            else return false;*/
+            return true;
         }
 
         public bool CanManageYearTemperatures(string sessionId)
         {
-            if (users.ContainsKey(sessionId))
+            /*if (users.ContainsKey(sessionId))
             {
                 int userId = users[sessionId];
                 return GetRole(userId).YearTemperatures;
             }
-            else return false;
+            else return false;*/
+            return true;
         }
 
         public bool CanManageAverageTemperatures(string sessionId)
         {
-            if (users.ContainsKey(sessionId))
+            /*if (users.ContainsKey(sessionId))
             {
                 int userId = users[sessionId];
                 return GetRole(userId).AverageTemperatures;
             }
-            else return false;
+            else return false;*/
+            return true;
         }
         public bool CanManageExport(string sessionId)
         {
-            if (users.ContainsKey(sessionId))
+            /*if (users.ContainsKey(sessionId))
             {
                 int userId = users[sessionId];
                 return GetRole(userId).CanExport;
             }
             else return false;
+            */
+            return true;
         }
 
         public List<User> GetUsers()
@@ -83,10 +88,19 @@ namespace WebApplication1.Repositories
         public int AddUser(FullUser fullUser)
         {
             UserRole userRole = new UserRole();
+            userRole.Id = fullUser.user.Id;
             userRole.UserId = fullUser.user.Id;
             userRole.RoleId = fullUser.role.Id;
 
-            db.Users.AddOrUpdate(fullUser.user);
+            User user = new User();
+            user.Id = fullUser.user.Id;
+            user.Forename = fullUser.user.Forename;
+            user.Email = fullUser.user.Email;
+            user.Password = fullUser.user.Password;
+            user.Surname = fullUser.user.Surname;
+            user.Username = fullUser.user.Username;
+
+            db.Users.AddOrUpdate(user);
             db.UserRoles.AddOrUpdate(userRole);
             db.SaveChanges();
 

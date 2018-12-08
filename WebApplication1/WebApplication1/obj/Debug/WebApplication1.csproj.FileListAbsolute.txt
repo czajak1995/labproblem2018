@@ -164,9 +164,6 @@ C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\Microso
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\Microsoft.AI.Web.xml
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.Initial.resources
-C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.TempDevice.resources
-C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.cache
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
@@ -176,8 +173,6 @@ C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\NPOI.dl
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\NPOI.OOXML.dll
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\NPOI.OpenXml4Net.dll
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\bin\NPOI.OpenXmlFormats.dll
-C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.UserManagement.resources
-C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.dsd.resources
-C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.UserLoginUp.resources
 C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache
-C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.RoleExport.resources
+C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.Initial.resources
+C:\Users\Kuba\Desktop\labproblem2018\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.cache
