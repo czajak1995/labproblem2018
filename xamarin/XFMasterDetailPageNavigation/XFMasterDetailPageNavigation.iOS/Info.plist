@@ -28,7 +28,11 @@
 	<string>com.yourcompany.XFMasterDetailPageNavigation</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>CFBundleIconFiles</key>
+  <key>NSPhotoLibraryAddUsageDescription </key>
+  <string>Need permission to save files.</string>
+  <key>NSPhotoLibraryUsageDescription </key>
+  <string>Need permission to access files.</string>
+  <key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon-60@2x</string>
 		<string>Icon-60@3x</string>

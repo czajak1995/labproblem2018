@@ -7,6 +7,9 @@ using System.Text;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using XFMasterDetailPageNavigation.Models;
+using Plugin.DownloadManager.Abstractions;
+using System.Net.Http;
+using System.IO;
 
 namespace XFMasterDetailPageNavigation
 {
@@ -21,6 +24,11 @@ namespace XFMasterDetailPageNavigation
 
         [Get("/api/temperature/info?deviceId={id}")]
         Task <TemperatureInfo> GetTempInfoPerDevice(int id);
+
+        [Get("/api//temperature/export")]
+        Task<Stream> GetExcel();
+
+
 
     }
 
