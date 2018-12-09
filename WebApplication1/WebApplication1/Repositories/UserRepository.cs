@@ -59,6 +59,22 @@ namespace WebApplication1.Repositories
             return true;
         }
 
+        public List<FullUser> GetFullUsers()
+        {
+            List<User> users = GetUsers();
+            List<Role> roles = GetRoles();
+            List<UserRole> userRoles = GetUserRoles();
+            List<FullUser> fullUsers = users.Select(user =>
+            {
+                FullUser fullUser = new FullUser();
+                fullUser.user = user;
+                int roleId = userRoles.Where(userRole => userRole.UserId == user.Id).First().RoleId;
+                fullUser.role = roles.Where(role => role.Id == roleId).First();
+                return fullUser;
+            }).ToList();
+            return fullUsers;
+        }
+
         public List<User> GetUsers()
         {
             return db.Users.ToList();

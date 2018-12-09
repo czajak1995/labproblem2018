@@ -22,10 +22,10 @@ namespace WebApplication1.Controllers
 
         [Route("allUsers")]
         [HttpGet]
-        public List<User> GetUsers(string sessionId)
+        public List<FullUser> GetUsers(string sessionId)
         {
             if (userRepository.CanManageUsers (sessionId))
-                return userRepository.GetUsers();
+                return userRepository.GetFullUsers();
             else return null;
         }
 
@@ -48,14 +48,14 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        [Route("log")]
+        [Route("login")]
         public SessionRole LogUser(string login, string password)
         {
             return userRepository.LoginUser(login, password, Request.Headers.UserAgent.ToString());
         }
 
         [HttpPost]
-        [Route("unlog")]
+        [Route("logout")]
         public bool UnlogUser(string sessionId)
         {
             return userRepository.UnlogUser(sessionId);
