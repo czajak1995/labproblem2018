@@ -103,11 +103,6 @@ namespace WebApplication1.Repositories
 
         public int AddUser(FullUser fullUser)
         {
-            UserRole userRole = new UserRole();
-            userRole.Id = fullUser.user.Id;
-            userRole.UserId = fullUser.user.Id;
-            userRole.RoleId = fullUser.role.Id;
-
             User user = new User();
             user.Id = fullUser.user.Id;
             user.Forename = fullUser.user.Forename;
@@ -115,12 +110,19 @@ namespace WebApplication1.Repositories
             user.Password = fullUser.user.Password;
             user.Surname = fullUser.user.Surname;
             user.Username = fullUser.user.Username;
-
             db.Users.AddOrUpdate(user);
+            db.SaveChanges();
+
+            User userInDb = db.Users.Where(x => x.Username == fullUser.user.Username).First();
+            UserRole userRole = new UserRole();
+            userRole.Id = userInDb.Id;
+            userRole.UserId = userInDb.Id;
+            userRole.RoleId = fullUser.role.Id;
+
             db.UserRoles.AddOrUpdate(userRole);
             db.SaveChanges();
 
-            return fullUser.user.Id;
+            return userInDb.Id;
         }
 
         public int AddRole(Role role)
