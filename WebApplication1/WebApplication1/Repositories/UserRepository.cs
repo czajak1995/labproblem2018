@@ -61,10 +61,10 @@ namespace WebApplication1.Repositories
 
         public List<FullUser> GetFullUsers()
         {
-            List<User> users = GetUsers();
+            List<User> dbUsers = GetUsers();
             List<Role> roles = GetRoles();
             List<UserRole> userRoles = GetUserRoles();
-            List<FullUser> fullUsers = users.Select(user =>
+            List<FullUser> fullUsers = dbUsers.Select(user =>
             {
                 FullUser fullUser = new FullUser();
                 fullUser.user = user;
