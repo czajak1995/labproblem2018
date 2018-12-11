@@ -90,11 +90,11 @@ namespace WebApplication1.Controllers
 
         [HttpDelete]
         [Route("removeRole")]
-        public int? RemoveRole(string sessionId, int roleId)
+        public bool RemoveRole(string sessionId, int roleId)
         {
             if (userRepository.CanManageUsers (sessionId))
                 return userRepository.RemoveRole(roleId);
-            else return null;
+            else return false;
         }
     }
 }

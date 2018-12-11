@@ -17,46 +17,41 @@ namespace WebApplication1.Repositories
 
         public bool CanManageUsers(string sessionId)
         {
-            /*if (users.ContainsKey(sessionId))
+            if (users.ContainsKey(sessionId))
             {
                 int userId = users[sessionId];
                 return GetRole(userId).ManageUsers;
             }
-            else return false;*/
-            return true;
+            else return false;
         }
 
         public bool CanManageYearTemperatures(string sessionId)
         {
-            /*if (users.ContainsKey(sessionId))
+            if (users.ContainsKey(sessionId))
             {
                 int userId = users[sessionId];
                 return GetRole(userId).YearTemperatures;
             }
-            else return false;*/
-            return true;
+            else return false;
         }
 
         public bool CanManageAverageTemperatures(string sessionId)
         {
-            /*if (users.ContainsKey(sessionId))
+            if (users.ContainsKey(sessionId))
             {
                 int userId = users[sessionId];
                 return GetRole(userId).AverageTemperatures;
             }
-            else return false;*/
-            return true;
+            else return false;
         }
         public bool CanManageExport(string sessionId)
         {
-            /*if (users.ContainsKey(sessionId))
+            if (users.ContainsKey(sessionId))
             {
                 int userId = users[sessionId];
                 return GetRole(userId).CanExport;
             }
             else return false;
-            */
-            return true;
         }
 
         public List<FullUser> GetFullUsers()
@@ -150,21 +145,18 @@ namespace WebApplication1.Repositories
             return userId;
         }
 
-        public int RemoveRole(int roleId)
+        public bool RemoveRole(int roleId)
         {
             Role roleToRemove = db.Roles.Where(t => t.Id == roleId).FirstOrDefault();
             UserRole userRoleToRemove = db.UserRoles.Where(t => t.RoleId == roleId).FirstOrDefault();
 
-            if (roleToRemove != null)
+            if (roleToRemove != null && db.UserRoles.Where(t => t.RoleId == roleId).Count() == 0)
             {
                 db.Roles.Remove(roleToRemove);
+                db.SaveChanges();
+                return true;
             }
-            if (userRoleToRemove != null)
-            {
-                db.UserRoles.Remove(userRoleToRemove);
-            }
-            db.SaveChanges();
-            return roleId;
+            else return false;
         }
 
         public SessionRole LoginUser(string login, string password, string userAgent)
