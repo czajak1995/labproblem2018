@@ -16,19 +16,21 @@ namespace XFMasterDetailPageNavigation
     [Headers("Content-Type: application/json")]
     public interface TestApi
     {
-        [Get("/api/device/all")]
+        [Get("/api/device/all?sessionId=session")]
         Task<List<Device>> GetDeviceList();
 
-        [Get("/api/temperature/all?deviceId={id}")]
+        [Get("/api/temperature/all?deviceId={id}&sessionId=session")]
         Task<List<int>> GetAllTemperaturesPerDevice(int id);
 
-        [Get("/api/temperature/info?deviceId={id}")]
+        [Get("/api/temperature/info?deviceId={id}&sessionId=session")]
         Task <TemperatureInfo> GetTempInfoPerDevice(int id);
 
-        [Get("/api//temperature/export")]
+        //TODO
+        [Get("/api/temperature/export?sessionId=session")]
         Task<Stream> GetExcel();
 
-
+        [Post("/api/users/login?login={login}&password={password}")]
+        Task<SessionRole> Login(string login, string password);
 
     }
 

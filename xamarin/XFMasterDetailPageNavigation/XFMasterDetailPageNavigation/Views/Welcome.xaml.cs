@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace XFMasterDetailPageNavigation
+namespace XFMasterDetailPageNavigation.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LogoutPage : ContentPage
+	public partial class Welcome : ContentPage
 	{
-		public LogoutPage ()
+		public Welcome ()
 		{
 			InitializeComponent ();
-            App.Current.MainPage = new Login();
 		}
 	}
 }

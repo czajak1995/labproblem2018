@@ -13,7 +13,9 @@ namespace XFMasterDetailPageNavigation
 		{
 			InitializeComponent();
 
-			MainPage = new XFMasterDetailPageNavigation.MainPage();
+            MainPage = new NavigationPage(new Login());
+
+			//MainPage = new XFMasterDetailPageNavigation.MainPage();
 		}
 
 		protected override void OnStart ()
