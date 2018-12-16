@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -29,7 +30,14 @@ namespace XFMasterDetailPageNavigation
             navigationDrawerList.ItemsSource = menuList;
 
             // Initial navigation, this can be used for our home page
-            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(HomePage)));
+            try
+            {
+                Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(HomePage)));
+            }
+            catch (TargetInvocationException ex)
+            {
+                int i = 0;
+            }
         }
 
         // Event for Menu Item selection, here we are going to handle navigation based
@@ -39,9 +47,15 @@ namespace XFMasterDetailPageNavigation
 
             var item = (MasterPageItem)e.SelectedItem;
             Type page = item.TargetType;
-
-            Detail = new NavigationPage((Page)Activator.CreateInstance(page));
-            IsPresented = false;
+            try
+            {
+                Detail = new NavigationPage((Page)Activator.CreateInstance(page));
+            }
+            catch (TargetInvocationException ex)
+            {
+                int i = 0;
+            }
+    IsPresented = false;
         }
     }
 }
