@@ -21,6 +21,8 @@ namespace WebApplication1.Models
 
         public System.Data.Entity.DbSet<WebApplication1.Models.User> Users { get; set; }
 
+        public System.Data.Entity.DbSet<WebApplication1.Models.Message> Messages { get; set; }
+
         public System.Data.Entity.DbSet<WebApplication1.Models.UserLogin> UserLogins { get; set; }
 
         public System.Data.Entity.DbSet<WebApplication1.Models.UserRole> UserRoles { get; set; }

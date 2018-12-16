@@ -29,6 +29,24 @@ namespace WebApplication1.Controllers
             else return null;
         }
 
+        [Route("user")]
+        [HttpGet]
+        public FullUser GetUser(string sessionId, int userId)
+        {
+            if (userRepository.CanManageUsers(sessionId))
+                return userRepository.GetFullUser(userId);
+            else return null;
+        }
+
+        [Route("role")]
+        [HttpGet]
+        public Role GetRole(string sessionId, int roleId)
+        {
+            if (userRepository.CanManageUsers(sessionId))
+                return userRepository.GetRole(roleId);
+            else return null;
+        }
+
         [Route("allUserRoles")]
         [HttpGet]
         public List<UserRole> GetUserRoles(string sessionId)

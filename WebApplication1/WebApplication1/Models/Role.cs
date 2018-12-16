@@ -14,6 +14,7 @@ namespace WebApplication1.Models
         public bool AverageTemperatures { get; set; }
         public bool YearTemperatures { get; set; }
         public bool CanExport { get; set; }
+        public bool UseMessanger { get; set; }
 
     }
 }

@@ -25,6 +25,16 @@ namespace WebApplication1.Repositories
             else return false;
         }
 
+        public bool CanUseMessanger(string sessionId)
+        {
+            if (users.ContainsKey(sessionId))
+            {
+                int userId = users[sessionId];
+                return GetRole(userId).UseMessanger;
+            }
+            else return false;
+        }
+
         public bool CanManageYearTemperatures(string sessionId)
         {
             if (users.ContainsKey(sessionId))
@@ -85,15 +95,25 @@ namespace WebApplication1.Repositories
             return db.UserRoles.ToList();
         }
 
-        public Role GetRole(int userId)
+        public Role GetRole(int roleId)
         {
-            int? roleId = db.UserRoles.Where(t => t.UserId == userId).FirstOrDefault().RoleId;
+            return db.Roles.Where(t => t.Id == roleId).FirstOrDefault();
+        }
 
-            if(roleId != null)
+        public FullUser GetFullUser(int userId)
+        {
+            List<User> dbUsers = GetUsers();
+            List<Role> roles = GetRoles();
+            List<UserRole> userRoles = GetUserRoles();
+            FullUser fullUser = dbUsers.Where(t => t.Id == userId).ToList().Select(user =>
             {
-                return db.Roles.Where(t => t.Id == roleId).FirstOrDefault();
-            }
-            return null;
+                FullUser full = new FullUser();
+                full.user = user;
+                int roleId = userRoles.Where(userRole => userRole.UserId == user.Id).First().RoleId;
+                full.role = roles.Where(role => role.Id == roleId).First();
+                return full;
+            }).First();
+            return fullUser;
         }
 
         public int AddUser(FullUser fullUser)
