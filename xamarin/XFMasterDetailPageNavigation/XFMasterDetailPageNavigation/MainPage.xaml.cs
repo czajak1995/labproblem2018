@@ -43,9 +43,7 @@ namespace XFMasterDetailPageNavigation
                 menuList.Add(new MasterPageItem() { Title = "Users", Icon = "setting.png", TargetType = typeof(UserPage) });
                 menuList.Add(new MasterPageItem() { Title = "Roles", Icon = "setting.png", TargetType = typeof(RolePage) });
             }
-            
-            //menuList.Add(new MasterPageItem() { Title = "Help", Icon = "help.png", TargetType = typeof(HelpPage) });
-            //menuList.Add(new MasterPageItem() { Title = "Help", Icon = "help.png", TargetType = typeof(HelpPage) });
+            menuList.Add(new MasterPageItem() { Title = "Messanger", Icon = "setting.png", TargetType = typeof(PostPage) });
             menuList.Add(new MasterPageItem() { Title = "LogOut", Icon = "logout.png", TargetType = typeof(LogoutPage) });
 
             // Setting our list to be ItemSource for ListView in MainPage.xaml

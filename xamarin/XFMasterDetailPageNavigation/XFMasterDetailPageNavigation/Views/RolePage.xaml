@@ -1,12 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasBackButton="False"
              x:Class="XFMasterDetailPageNavigation.Views.RolePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                   
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Id " Grid.Row="0" Grid.Column="0"/>
+                <Label Text="Name" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1"/>
+                <Label Text="User and Role" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" />
+                <Label Text="Avg. Temp" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" />
+                <Label Text="Year Temp" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="1" />
+                <Label Text="Exp." Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="1"/>
+                <Label Text="" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2"/>
+
+            </Grid>
+            <ListView x:Name="RolesView" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Id}" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
+                                <Label Text="{Binding Name}"  VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1"/>
+                                <Label Text="{Binding ManageUsers}"  VerticalOptions="Center" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1"/>
+                                <Label Text="{Binding AverageTemperatures}"  VerticalOptions="Center" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1"/>
+                                <Label Text="{Binding YearTemperatures}" VerticalOptions="Center" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="1"/>
+                                <Label Text="{Binding CanExport}"  VerticalOptions="Center" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="1"/>
+                                <Button Text="Edit" Clicked="EditRole" HorizontalOptions ="EndAndExpand" Grid.Row="0" Grid.Column="6"  Grid.ColumnSpan="2"/>
+                            </Grid>
+                           
+                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="New Role" Clicked="AddRole" HorizontalOptions ="CenterAndExpand" VerticalOptions="StartAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

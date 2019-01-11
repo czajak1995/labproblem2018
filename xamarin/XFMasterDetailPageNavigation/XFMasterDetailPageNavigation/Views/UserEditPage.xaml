@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XFMasterDetailPageNavigation.UserEditPage"
+             NavigationPage.HasBackButton="False"
+             Title="Setting">
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Username: " VerticalOptions="Center"/>
+                <Entry x:Name="username"  HorizontalOptions="FillAndExpand" Placeholder="username"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Password: " VerticalOptions="Center"/>
+                <Entry x:Name="password"  HorizontalOptions="FillAndExpand" Placeholder="password"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Forename: " VerticalOptions="Center"/>
+                <Entry x:Name="forename" HorizontalOptions="FillAndExpand" Placeholder="forename"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Surname: " VerticalOptions="Center"/>
+                <Entry x:Name="surname" HorizontalOptions="FillAndExpand" Placeholder="surname"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Email: " VerticalOptions="Center"/>
+                <Entry x:Name="email" HorizontalOptions="FillAndExpand" Placeholder="email"/>
+            </StackLayout>
+            <Picker x:Name="MainPicker" Title="Role" SelectedIndexChanged="MainPicker_SelectedIndexChanged"/>
+            <Button x:Name="saveButton" Text="SAVE" Clicked="onSave"/>
+            <Button x:Name="backButton" Text="BACK" Clicked="onBack"/>
+            <Button x:Name="deleteButton" Text="DELETE" Clicked="onDelete"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+
+<!--<Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Top Left" Grid.Row="0" Grid.Column="0" />
+            <Label Text="Top Right" Grid.Row="0" Grid.Column="1" />
+            <Label Text="Bottom Left" Grid.Row="1" Grid.Column="0" />
+            <Label Text="Bottom Right" Grid.Row="1" Grid.Column="1" />
+            <Entry x:Name="username" Grid.Row="2" Grid.Column="0" />
+            <Entry x:Name="password" Grid.Row="2" Grid.Column="1" />
+            <Entry x:Name="forename" Grid.Row="3" Grid.Column="0" />
+            <Entry x:Name="surname" Grid.Row="3" Grid.Column="1" />
+            <Entry x:Name="email" Grid.Row="4" Grid.Column="0" />
+            <Picker x:Name="MainPicker" Title="Role" SelectedIndexChanged="MainPicker_SelectedIndexChanged" Grid.Row="4" Grid.Column="1" />
+            <Button x:Name="saveButton" Text="SAVE" Clicked="onSave" Grid.Row="5" Grid.Column="0" />
+            <Button x:Name="backButton" Text="BACK" Clicked="onBack" Grid.Row="5" Grid.Column="1" />
+        </Grid>-->

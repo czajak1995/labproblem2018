@@ -1,12 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XFMasterDetailPageNavigation.Views.UserPage">
+             x:Class="XFMasterDetailPageNavigation.Views.UserPage"
+             Title="Users List"
+              NavigationPage.HasBackButton="False">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+            <ListView x:Name="UsersView" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding user.Id}" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                                <Label Text="{Binding role.Name}" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                                <Label Text="{Binding user.Forename}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                                <Label Text="{Binding user.Surname}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+
+                                <Button Text="Edit" Clicked="Edit" HorizontalOptions ="EndAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="New User" Clicked="AddUser" HorizontalOptions ="CenterAndExpand" VerticalOptions="StartAndExpand"/>
         </StackLayout>
+        
     </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Edit" Clicked="OnEditTap" />
+        <ToolbarItem Text="Delete" Clicked="OnDeleteTap" CommandParameter ="{Binding user.Forename}"/>-->
+    </ContentPage.ToolbarItems>
 </ContentPage>

@@ -16,7 +16,7 @@ namespace XFMasterDetailPageNavigation
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HomePage : ContentPage
 	{
-        string http = "http://192.168.1.83:3002";
+        string http = UrlSettings.httpUrl;
         List<Device> devices = new List<Device>();
 
         public HomePage()
@@ -34,10 +34,11 @@ namespace XFMasterDetailPageNavigation
             List<Entry> entries = new List<Entry>();
             TemperatureInfo avgTemp = new TemperatureInfo();
             var apiResponse = RestService.For<TestApi>(http);
+            string sessionId = (string)App.Current.Properties["sessionId"];
 
             for (int j = 0; j < devices.Count; j++)
             {
-                Task.Run(async () => { avgTemp = await apiResponse.GetTempInfoPerDevice(devices[j].Id); }).Wait();
+                Task.Run(async () => { avgTemp = await apiResponse.GetTempInfoPerDevice(devices[j].Id, sessionId); }).Wait();
                 entries.Add(new Entry(avgTemp.Average) { Color = getPointColor(), Label = devices[j].Name, ValueLabel = avgTemp.Average.ToString() });
             }
             return entries;
@@ -46,7 +47,8 @@ namespace XFMasterDetailPageNavigation
         public async Task initDeviceList()
         {
             var apiResponse = RestService.For<TestApi>(http);
-            devices = await apiResponse.GetDeviceList();
+            string sessionId = (string)App.Current.Properties["sessionId"];
+            devices = await apiResponse.GetDeviceList(sessionId);
         }
 
 

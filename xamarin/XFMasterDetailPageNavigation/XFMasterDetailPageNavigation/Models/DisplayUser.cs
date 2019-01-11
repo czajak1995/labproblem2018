@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XFMasterDetailPageNavigation.Models
 {
-    public class User 
+    class DisplayUser
     {
         public int Id { get; set; }
         public string Forename { get; set; }
@@ -12,5 +12,6 @@ namespace XFMasterDetailPageNavigation.Models
         public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public string RoleName { get; set; }
     }
 }

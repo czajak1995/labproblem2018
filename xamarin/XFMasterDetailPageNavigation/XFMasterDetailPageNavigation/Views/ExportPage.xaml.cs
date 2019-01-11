@@ -11,14 +11,14 @@ using Xamarin.Forms.Xaml;
 
 namespace XFMasterDetailPageNavigation.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ExportPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ExportPage : ContentPage
+    {
 
         public IDownloadFile File;
         bool isDownloading = true;
-        public ExportPage ()
-		{
+        public ExportPage()
+        {
             InitializeComponent();
             CrossDownloadManager.Current.CollectionChanged += (sender, e) =>
                 System.Diagnostics.Debug.WriteLine(
@@ -81,10 +81,11 @@ namespace XFMasterDetailPageNavigation.Views
         {
             CrossDownloadManager.Current.Abort(File);
         }
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-            var Url = "http://www.pdf995.com/samples/pdf.pdf";
-
+            string sessionId = (string)App.Current.Properties["sessionId"];
+            var Url = "http://192.168.1.83:3002/api/temperature/export?sessionId=" + sessionId + "&filename=SampleExcel.xlsx";
+            
             DownloadFile(Url);
         }
     }

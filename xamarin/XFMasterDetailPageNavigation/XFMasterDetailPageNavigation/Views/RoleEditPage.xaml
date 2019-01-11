@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XFMasterDetailPageNavigation.Views.RoleEditPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Role name: " VerticalOptions="Center"/>
+                <Entry x:Name="roleName"  HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Manage users " VerticalOptions="Center"/>
+                <Switch x:Name="manageUsers" IsToggled="False"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Average temperature " VerticalOptions="Center"/>
+                <Switch x:Name="avgTemp" IsToggled="False"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Year temperature " VerticalOptions="Center"/>
+                <Switch x:Name="yearTemp" IsToggled="False"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Export " VerticalOptions="Center"/>
+                <Switch x:Name="export" IsToggled="False"/>
+            </StackLayout>
+            <Button x:Name="saveButton" Text="SAVE" Clicked="onSave"/>
+            <Button x:Name="backButton" Text="BACK" Clicked="onBack"/>
+            <Button x:Name="deleteButton" Text="DELETE" Clicked="onDelete"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -15,7 +15,10 @@ namespace XFMasterDetailPageNavigation
 		public LogoutPage ()
 		{
 			InitializeComponent ();
+            App.Current.Properties["sessionId"] = "";
             App.Current.MainPage = new Login();
-		}
+            //Navigation.RemovePage(this);
+            this.Navigation.RemovePage(this.Navigation.NavigationStack[this.Navigation.NavigationStack.Count - 2]);
+        }
 	}
 }

@@ -14,7 +14,7 @@ namespace XFMasterDetailPageNavigation
 	public partial class Login : ContentPage
 	{
 
-        string http = "http://192.168.1.83:3002";
+        string http = UrlSettings.httpUrl;
         private SessionRole session;
         public Login ()
 		{
@@ -27,8 +27,10 @@ namespace XFMasterDetailPageNavigation
             String Username = usernameEntry.Text;
             String Password = passwordEntry.Text;
             session = await apiResponse.Login(Username, Password);
-            if (session == null || session.Equals("")) return;
+            if (session == null || session.sessionId.Equals("")) return;
+            App.Current.Properties["sessionId"] = session.sessionId;
             App.Current.MainPage = new MainPage(session);
+            
         }
     }
 }

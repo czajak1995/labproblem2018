@@ -14,6 +14,7 @@ using Plugin.DownloadManager;
 using Plugin.DownloadManager.Abstractions;
 using System.IO;
 using PCLStorage;
+using XFMasterDetailPageNavigation.Models;
 
 namespace XFMasterDetailPageNavigation.Views
 {
@@ -23,7 +24,7 @@ namespace XFMasterDetailPageNavigation.Views
 
         List<Device> devices = new List<Device>();
         Stream file;
-        string http = "http://192.168.1.83:3002";
+        string http = UrlSettings.httpUrl;
         //public IDownloadFile File;
         bool isDownloading = true;
 
@@ -39,7 +40,8 @@ namespace XFMasterDetailPageNavigation.Views
                 var chart = new LineChart() { Entries = initializeDevicesEntries(getFirstDeviceId()).Result };
                 chart.MinValue = 60;
                 this.chartView.Chart = chart;
-            } catch(IndexOutOfRangeException ex)
+            }
+            catch (IndexOutOfRangeException ex)
             {
                 DisplayAlert("Server error", ex.Message, "OK");
             }
@@ -99,8 +101,9 @@ namespace XFMasterDetailPageNavigation.Views
         {
             List<Entry> entries = new List<Entry>();
             var allTemp = new List<int>();
+            string sessionId = (string)App.Current.Properties["sessionId"];
             var apiResponse = RestService.For<TestApi>(http);
-             Task.Run(async () => { allTemp = await  apiResponse.GetAllTemperaturesPerDevice(i); }).Wait();
+            Task.Run(async () => { allTemp = await apiResponse.GetAllTemperaturesPerDevice(i, sessionId); }).Wait();
             //var allTemp = await apiResponse.GetAllTemperaturesPerDevice(1);
             for (int j = 0; j < allTemp.Count; j++)
             {
@@ -113,7 +116,7 @@ namespace XFMasterDetailPageNavigation.Views
                     });
                 else
                     entries.Add(new Entry(allTemp[j]) { Color = getPointColor() });
-            }       
+            }
             return entries;
         }
 
@@ -135,22 +138,22 @@ namespace XFMasterDetailPageNavigation.Views
 
         void initializePickerItems()
         {
-            devices = getMockDevices();          
+            devices = getMockDevices();
             foreach (var dev in devices)
             {
-                MainPicker.Items.Add(dev.Name);  
-            }        
+                MainPicker.Items.Add(dev.Name);
+            }
         }
 
         int getDeviceId(string name)
         {
             foreach (var dev in devices)
             {
-                if(dev.Name == name)
+                if (dev.Name == name)
                 {
                     return dev.Id;
                 }
-                
+
             }
             return 0;
         }
@@ -159,26 +162,28 @@ namespace XFMasterDetailPageNavigation.Views
         {
             Device device = devices.First();
             if (device.Equals(null)) throw new IndexOutOfRangeException("Message");
-            return devices.First().Id;  
+            return devices.First().Id;
         }
 
         public async Task initializePickerDevices()
         {
             var apiResponse = RestService.For<TestApi>(http);
-            devices = await apiResponse.GetDeviceList();
+            string sessionId = (string)App.Current.Properties["sessionId"];
+            devices = await apiResponse.GetDeviceList(sessionId);
             //devices = getMockDevices();
             foreach (var dev in devices)
             {
                 MainPicker.Items.Add(dev.Name);
             }
             int j;
-           
+
         }
 
         public async Task getFile()
         {
             var apiResponse = RestService.For<TestApi>(http);
-            Stream instream = await apiResponse.GetExcel();
+            string sessionId = (string)App.Current.Properties["sessionId"];
+            Stream instream = await apiResponse.GetExcel(sessionId);
 
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             string filename = Path.Combine(path, "myfile.xlsx");
@@ -229,11 +234,11 @@ namespace XFMasterDetailPageNavigation.Views
         {
 
 
-        // var Url = "http://www.orimi.com/pdf-test.pdf";
-        //var Url = "http://www.pdf995.com/samples/pdf.pdf";
-        var Url = "http://www.pdf995.com/samples/pdf.pdf";
-       // http://localhost:51905/api/temperature/export?filename=export.xlsx
-           // var Url = "http://192.168.1.83:3002/api/temperature/export?filename=export.xlsx";
+            // var Url = "http://www.orimi.com/pdf-test.pdf";
+            //var Url = "http://www.pdf995.com/samples/pdf.pdf";
+            var Url = "http://www.pdf995.com/samples/pdf.pdf";
+            // http://localhost:51905/api/temperature/export?filename=export.xlsx
+            // var Url = "http://192.168.1.83:3002/api/temperature/export?filename=export.xlsx";
             //await getFile();
             DownloadFile(Url);
 

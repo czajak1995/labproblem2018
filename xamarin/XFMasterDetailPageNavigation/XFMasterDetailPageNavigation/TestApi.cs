@@ -16,21 +16,44 @@ namespace XFMasterDetailPageNavigation
     [Headers("Content-Type: application/json")]
     public interface TestApi
     {
-        [Get("/api/device/all?sessionId=session")]
-        Task<List<Device>> GetDeviceList();
+        [Get("/api/device/all?sessionId={sessionId}")]
+        Task<List<Device>> GetDeviceList(string sessionId);
 
-        [Get("/api/temperature/all?deviceId={id}&sessionId=session")]
-        Task<List<int>> GetAllTemperaturesPerDevice(int id);
+        [Get("/api/temperature/all?deviceId={id}&sessionId={sessionId}")]
+        Task<List<int>> GetAllTemperaturesPerDevice(int id, string sessionId);
 
-        [Get("/api/temperature/info?deviceId={id}&sessionId=session")]
-        Task <TemperatureInfo> GetTempInfoPerDevice(int id);
+        [Get("/api/temperature/info?deviceId={id}&sessionId={sessionId}")]
+        Task <TemperatureInfo> GetTempInfoPerDevice(int id, string sessionId);
 
         //TODO
-        [Get("/api/temperature/export?sessionId=session")]
-        Task<Stream> GetExcel();
+        [Get("/api/temperature/export?sessionId={sessionId}&filename=SampleExcel.xlsx")]
+        Task<Stream> GetExcel(string sessionId);
 
         [Post("/api/users/login?login={login}&password={password}")]
         Task<SessionRole> Login(string login, string password);
+
+        [Post("/api/users/logout?sessionId=session")]
+        Task<bool> Logout();
+
+        [Get("/api/users/allUsers?sessionId={sessionId}")]
+        Task<FullUser[]> GetAllUsers(string sessionId);
+
+        [Post("/api/users/addUser?sessionId={sessionId}")]
+        Task<int> AddUser([Body] FullUser user, string sessionId);
+
+        [Delete("/api/users/removeUser?sessionId={sessionId}&userId={userId}")]
+        Task<int> RemoveUser(int userId, string sessionId);
+
+        [Get("/api/users/allRoles?sessionId={sessionId}")]
+        Task<Role[]> GetAllRoles(string sessionId); 
+
+        [Post("/api/users/addRole?sessionId={sessionId}")]
+        Task<int> AddRole([Body] Role role, string sessionId);
+
+        [Delete("/api/users/removeRole?sessionId={sessionId}&roleId={roleId}")]
+        Task<Boolean> RemoveRole(int roleId, string sessionId);
+
+
 
     }
 
